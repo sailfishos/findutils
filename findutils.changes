@@ -1,0 +1,30 @@
+* Tue May 24 2011 Anas Nashif <anas.nashif@intel.com> - 4.2.31
+- Repackage documentaion/translations
+
+* Wed Jan 26 2011 Yan Li <yan.i.li@intel.com> - 4.2.31
+- Fixed "find -ls" stack overflow (BMC#12931)
+
+* Wed Dec 29 2010 Carsten Munk <carsten@maemo.org> - 4.2.31
+- Re-add %{run_tests} usage in packaging. Without this, 
+  dejagnu is a BuildRequires and makes MeeGo bootstrap/build cycles
+  much harder as it adds Tcl/Tk dependancy. (BMC#11819)
+
+* Wed Dec 29 2010 Yan Li <yan.i.li@intel.com> - 4.2.31
+- Reverted to version 4.2.31 (BMC#11589)
+
+* Thu Nov 05 2009 PeterZhu <peter.j.zhu@intel.com> - 4.4.0
+- Remove /usr/share/info/dir in %install
+- Remove old tar ball
+- Fix summary of locatedb to remove rpmlint error
+
+* Fri Dec 05 2008 Arjan van de Ven <arjan@linux.intel.com> - 4.4.0
+- Remove epoch
+
+* Fri Dec 05 2008 Arjan van de Ven <arjan@linux.intel.com> - 4.2.33
+- split off a -doc package
+
+* Fri Sep 12 2008 Yi Yang <yi.y.yang@intel.com> 4.2.33
+- Remove installation warnings of info files
+
+* Wed Jul 23 2008 Peter J Zhu <peter.j.zhu@intel.com>
+- Added %doc prefix to man/info
