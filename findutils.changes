@@ -1,3 +1,9 @@
+* Mon Mar 05 2012 Marko Saukko <marko.saukko@gmail.com> - 4.2.31
+- Created -docs package that contains man and info files (Part of MER#197).
+- Moved some %doc files to -docs as well.
+- Dropped Epoch from version for Mer.
+- Added .yaml for spectacle.
+
 * Tue May 24 2011 Anas Nashif <anas.nashif@intel.com> - 4.2.31
 - Repackage documentaion/translations
 
