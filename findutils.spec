@@ -16,6 +16,7 @@ Source0:    ftp://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Source100:  findutils.yaml
 Patch0:     findutils-4.2.31-no-locate.patch
 Patch1:     findutils-bmc12931-find-ls-stack-overflow.patch
+Patch2:     findutils-aarch64.patch
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
@@ -56,6 +57,7 @@ Requires(postun): /sbin/install-info
 %patch0 -p1
 # findutils-bmc12931-find-ls-stack-overflow.patch
 %patch1 -p1
+%patch2 -p1
 # >> setup
 # << setup
 
