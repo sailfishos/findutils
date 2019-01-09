@@ -1,7 +1,7 @@
 Name:       findutils
 Summary:    The GNU versions of find utilities (find and xargs)
 Version:    4.2.31
-Release:    2
+Release:    3
 Group:      Applications/File
 License:    GPLv2+
 URL:        http://www.gnu.org/software/findutils/
@@ -9,6 +9,7 @@ Source0:    ftp://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
 Patch0:     findutils-4.2.31-no-locate.patch
 Patch1:     findutils-bmc12931-find-ls-stack-overflow.patch
 Patch2:     findutils-aarch64.patch
+Provides:   gnu-findutils
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
