@@ -1,14 +1,14 @@
 Name:       findutils
 Summary:    The GNU versions of find utilities (find and xargs)
-Version:    4.2.31
-Release:    3
+Version:    4.6.0
+Release:    1
 Group:      Applications/File
-License:    GPLv2+
+License:    GPLv3+
 URL:        http://www.gnu.org/software/findutils/
-Source0:    ftp://ftp.gnu.org/gnu/findutils/%{name}-%{version}.tar.gz
-Patch0:     findutils-4.2.31-no-locate.patch
-Patch1:     findutils-bmc12931-find-ls-stack-overflow.patch
-Patch2:     findutils-aarch64.patch
+Source0:    %{name}-%{version}.tar.gz
+Patch0:     findutils-4.6.0-no-locate.patch
+Patch1:     findutils-4.6.0-gnulib-fflush.patch
+Patch2:     findutils-4.6.0-gnulib-makedev.patch
 Provides:   gnu-findutils
 BuildRequires:  libtool
 BuildRequires:  automake
@@ -16,6 +16,7 @@ BuildRequires:  autoconf
 BuildRequires:  gzip
 BuildRequires:  gettext-devel
 BuildRequires:  texinfo
+BuildRequires:  bison
 
 %description
 The findutils package contains programs which will help you locate
@@ -39,20 +40,24 @@ Requires(postun): /sbin/install-info
 Man and info pages for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}/upstream
 
-# findutils-4.2.31-no-locate.patch
+# findutils-4.6.0-no-locate.patch
 %patch0 -p1
-# findutils-bmc12931-find-ls-stack-overflow.patch
+
+# findutils-4.6.0-gnulib-fflush.patch
 %patch1 -p1
+
+# findutils-4.6.0-gnulib-makedev.patch
 %patch2 -p1
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
 export CXXFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
 
-%configure --disable-static \
-    --without-selinux
+./bootstrap --no-git --gnulib-srcdir=gnulib --skip-po
+
+%configure --without-selinux
 
 make %{?_smp_mflags}
 
@@ -74,10 +79,17 @@ install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
 
 %post doc
 %install_info --info-dir=%_infodir %{_infodir}/find.info.gz
+%install_info --info-dir=%_infodir %{_infodir}/find-maint.info.gz
+%install_info --info-dir=%_infodir %{_infodir}/find.info-1.gz
+%install_info --info-dir=%_infodir %{_infodir}/find.info-2.gz
+
 
 %postun doc
 if [ $1 = 0 ] ;then
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/find.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/find-maint.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/find.info-1.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/find.info-2.gz
 fi
 
 %files -f %{name}.lang
@@ -91,5 +103,5 @@ fi
 %defattr(-,root,root,-)
 %{_mandir}/man1/find.1*
 %{_mandir}/man1/xargs.1*
-%{_infodir}/find.info.gz
+%{_infodir}/find*.gz
 %{_docdir}/%{name}-%{version}

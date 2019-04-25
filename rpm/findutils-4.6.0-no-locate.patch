@@ -1,0 +1,43 @@
+--- upstream/Makefile.am_old	2019-02-07 08:22:56.124640104 +0200
++++ upstream/Makefile.am	2019-02-07 08:23:12.864891367 +0200
+@@ -9,7 +9,7 @@
+ 
+ 
+ # "tests" is the gnulib unit test dir.
+-SUBDIRS = gl tests build-aux lib find xargs locate doc po m4
++SUBDIRS = gl tests build-aux lib find xargs doc po m4
+ 
+ ACLOCAL_AMFLAGS = -I gl/m4 -I m4
+ 
+--- upstream/doc/Makefile.am_old	2019-02-07 08:23:21.733025310 +0200
++++ upstream/doc/Makefile.am	2019-02-07 08:24:28.074044637 +0200
+@@ -16,11 +16,9 @@
+ 
+ info_TEXINFOS = find.texi find-maint.texi
+ find_TEXINFOS = perm.texi parse-datetime.texi regexprops.texi fdl.texi
+-BUILT_SOURCES = dblocation.texi
+-nodist_find_TEXINFOS = dblocation.texi
+ find_maint_TEXINFOS = fdl.texi
+ MOSTLYCLEANFILES = find.cps
+-CLEANFILES = find.txt find_mono.html findutils.texi_html_node.tar.gz dblocation.texi
++CLEANFILES = find.txt find_mono.html findutils.texi_html_node.tar.gz
+ 
+ MAKEINFOTXT = $(MAKEINFO) --plaintext
+ 
+@@ -70,6 +68,3 @@
+ findutils.texi_html_node.tar.gz: find.html
+ 	tar zcf $@ $<
+ 
+-
+-dblocation.texi: ../locate/dblocation.texi
+-	$(LN_S) ../locate/dblocation.texi $@
+--- upstream/doc/find.texi_old	2019-02-07 09:23:32.282097834 +0200
++++ upstream/doc/find.texi	2019-02-07 09:26:42.662131006 +0200
+@@ -7,7 +7,6 @@
+ @c %**end of header
+ 
+ @include version.texi
+-@include dblocation.texi
+ 
+ @iftex
+ @finalout

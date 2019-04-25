@@ -1,3 +1,6 @@
+* Tue Feb 05 2019 Ville Nummela <ville.nummela@jolla.com> - 4.6.0-1
+- Upgrade to version 4.6.0. JB#44439
+
 * Thu Jan 10 2019 Tomi Leppänen <tomi.leppanen@jolla.com> - 4.2.31-3
 - [packaging] Provide gnu-findutils. Contributes to JB#36243
 
