@@ -67,10 +67,6 @@ rm -rf %{buildroot}
 
 rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
-mkdir -p %{buildroot}/bin
-pushd %{buildroot}/bin
-ln -sf ../usr/bin/find
-popd
 %find_lang %{name}
 
 mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
@@ -96,7 +92,6 @@ fi
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/find
-/bin/find
 %{_bindir}/xargs
 
 %files doc
