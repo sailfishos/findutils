@@ -13,7 +13,7 @@ Provides:   gnu-findutils
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
-BuildRequires:  gzip
+BuildRequires:  gnu-gzip
 BuildRequires:  gettext-devel
 BuildRequires:  texinfo
 BuildRequires:  bison
