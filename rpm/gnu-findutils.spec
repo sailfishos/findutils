@@ -1,4 +1,5 @@
-Name:       findutils
+%define     _name findutils
+Name:       gnu-%{_name}
 Summary:    The GNU versions of find utilities (find and xargs)
 Version:    4.6.0
 Release:    1
@@ -9,7 +10,6 @@ Source0:    %{name}-%{version}.tar.gz
 Patch0:     findutils-4.6.0-no-locate.patch
 Patch1:     findutils-4.6.0-gnulib-fflush.patch
 Patch2:     findutils-4.6.0-gnulib-makedev.patch
-Provides:   gnu-findutils
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
@@ -17,6 +17,8 @@ BuildRequires:  gzip
 BuildRequires:  gettext-devel
 BuildRequires:  texinfo
 BuildRequires:  bison
+Provides: %{_name} = 4.6.0+git1
+Obsoletes: %{_name} < 4.6.0+git1
 
 %description
 The findutils package contains programs which will help you locate
@@ -30,8 +32,10 @@ You should install findutils because it includes tools that are very
 useful for finding things on your system.
 
 %package doc
-Summary:    Documentation for %{name}
+Summary:    Documentation for %{_name}
 Group:      Documentation
+Provides: %{_name}-doc = 4.6.0+git1
+Obsoletes: %{_name}-doc < 4.6.0+git1
 Requires:   %{name} = %{version}-%{release}
 Requires(post): /sbin/install-info
 Requires(postun): /sbin/install-info
@@ -40,16 +44,7 @@ Requires(postun): /sbin/install-info
 Man and info pages for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
-
-# findutils-4.6.0-no-locate.patch
-%patch0 -p1
-
-# findutils-4.6.0-gnulib-fflush.patch
-%patch1 -p1
-
-# findutils-4.6.0-gnulib-makedev.patch
-%patch2 -p1
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
@@ -71,10 +66,10 @@ mkdir -p %{buildroot}/bin
 pushd %{buildroot}/bin
 ln -sf ../usr/bin/find
 popd
-%find_lang %{name}
+%find_lang %{_name}
 
-mkdir -p %{buildroot}%{_docdir}/%{name}-%{version}
-install -m0644 -t %{buildroot}%{_docdir}/%{name}-%{version} \
+mkdir -p %{buildroot}%{_docdir}/%{_name}-%{version}
+install -m0644 -t %{buildroot}%{_docdir}/%{_name}-%{version} \
         AUTHORS NEWS README THANKS TODO
 
 %post doc
@@ -92,7 +87,7 @@ if [ $1 = 0 ] ;then
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/find.info-2.gz
 fi
 
-%files -f %{name}.lang
+%files -f %{_name}.lang
 %defattr(-,root,root,-)
 %license COPYING
 %{_bindir}/find
@@ -104,4 +99,4 @@ fi
 %{_mandir}/man1/find.1*
 %{_mandir}/man1/xargs.1*
 %{_infodir}/find*.gz
-%{_docdir}/%{name}-%{version}
+%{_docdir}/%{_name}-%{version}
