@@ -3,7 +3,6 @@ Name:       gnu-%{_name}
 Summary:    The GNU versions of find utilities (find and xargs)
 Version:    4.6.0
 Release:    1
-Group:      Applications/File
 License:    GPLv3+
 URL:        http://www.gnu.org/software/findutils/
 Source0:    %{name}-%{version}.tar.gz
@@ -33,7 +32,6 @@ useful for finding things on your system.
 
 %package doc
 Summary:    Documentation for %{_name}
-Group:      Documentation
 Provides: %{_name}-doc = 4.6.0+git1
 Obsoletes: %{_name}-doc < 4.6.0+git1
 Requires:   %{name} = %{version}-%{release}
