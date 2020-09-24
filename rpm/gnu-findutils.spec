@@ -16,8 +16,8 @@ BuildRequires:  gzip
 BuildRequires:  gettext-devel
 BuildRequires:  texinfo
 BuildRequires:  bison
-Provides: %{_name} = 4.6.0+git1
-Obsoletes: %{_name} < 4.6.0+git1
+Provides: %{_name} = 4.6.0+git2
+Obsoletes: %{_name} < 4.6.0+git2
 
 %description
 The findutils package contains programs which will help you locate
@@ -32,8 +32,8 @@ useful for finding things on your system.
 
 %package doc
 Summary:    Documentation for %{_name}
-Provides: %{_name}-doc = 4.6.0+git1
-Obsoletes: %{_name}-doc < 4.6.0+git1
+Provides: %{_name}-doc = 4.6.0+git2
+Obsoletes: %{_name}-doc < 4.6.0+git2
 Requires:   %{name} = %{version}-%{release}
 Requires(post): /sbin/install-info
 Requires(postun): /sbin/install-info
