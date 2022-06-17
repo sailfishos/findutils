@@ -4,7 +4,7 @@ Summary:    The GNU versions of find utilities (find and xargs)
 Version:    4.6.0
 Release:    1
 License:    GPLv3+
-URL:        http://www.gnu.org/software/findutils/
+URL:        https://github.com/sailfishos/findutils
 Source0:    %{name}-%{version}.tar.gz
 Patch0:     findutils-4.6.0-no-locate.patch
 Patch1:     findutils-4.6.0-gnulib-fflush.patch
