@@ -1,3 +1,3 @@
 [submodule "upstream"]
 	path = upstream
-	url = https://git.savannah.gnu.org/git/findutils.git
+	url = https://github.com/sailfishos-mirror/findutils.git
