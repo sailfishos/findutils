@@ -28,10 +28,10 @@ Signed-off-by: Kamil Dudka <kdudka@redhat.com>
  gl/lib/stdio-impl.h | 6 ++++++
  6 files changed, 14 insertions(+), 8 deletions(-)
 
-diff --git a/gnulib/lib/fflush.c b/gnulib/lib/fflush.c
+diff --git a/lib/fflush.c b/lib/fflush.c
 index 5ae3e41..7a82470 100644
---- a/gnulib/lib/fflush.c
-+++ b/gnulib/lib/fflush.c
+--- a/lib/fflush.c
++++ b/lib/fflush.c
 @@ -33,7 +33,7 @@
  #undef fflush
  
@@ -59,10 +59,10 @@ index 5ae3e41..7a82470 100644
  
    clear_ungetc_buffer_preserving_position (stream);
  
-diff --git a/gnulib/lib/fpurge.c b/gnulib/lib/fpurge.c
+diff --git a/lib/fpurge.c b/lib/fpurge.c
 index f313b22..ecdf82d 100644
---- a/gnulib/lib/fpurge.c
-+++ b/gnulib/lib/fpurge.c
+--- a/lib/fpurge.c
++++ b/lib/fpurge.c
 @@ -62,7 +62,7 @@ fpurge (FILE *fp)
    /* Most systems provide FILE as a struct and the necessary bitmask in
       <stdio.h>, because they need it for implementing getc() and putc() as
@@ -72,10 +72,10 @@ index f313b22..ecdf82d 100644
    fp->_IO_read_end = fp->_IO_read_ptr;
    fp->_IO_write_ptr = fp->_IO_write_base;
    /* Avoid memory leak when there is an active ungetc buffer.  */
-diff --git a/gnulib/lib/freadahead.c b/gnulib/lib/freadahead.c
+diff --git a/lib/freadahead.c b/lib/freadahead.c
 index 094daab..3f8101e 100644
---- a/gnulib/lib/freadahead.c
-+++ b/gnulib/lib/freadahead.c
+--- a/lib/freadahead.c
++++ b/lib/freadahead.c
 @@ -25,7 +25,7 @@
  size_t
  freadahead (FILE *fp)
@@ -85,10 +85,10 @@ index 094daab..3f8101e 100644
    if (fp->_IO_write_ptr > fp->_IO_write_base)
      return 0;
    return (fp->_IO_read_end - fp->_IO_read_ptr)
-diff --git a/gnulib/lib/freading.c b/gnulib/lib/freading.c
+diff --git a/lib/freading.c b/lib/freading.c
 index 0512b19..8c48fe4 100644
---- a/gnulib/lib/freading.c
-+++ b/gnulib/lib/freading.c
+--- a/lib/freading.c
++++ b/lib/freading.c
 @@ -31,7 +31,7 @@ freading (FILE *fp)
    /* Most systems provide FILE as a struct and the necessary bitmask in
       <stdio.h>, because they need it for implementing getc() and putc() as
@@ -98,10 +98,10 @@ index 0512b19..8c48fe4 100644
    return ((fp->_flags & _IO_NO_WRITES) != 0
            || ((fp->_flags & (_IO_NO_READS | _IO_CURRENTLY_PUTTING)) == 0
                && fp->_IO_read_base != NULL));
-diff --git a/gnulib/lib/fseeko.c b/gnulib/lib/fseeko.c
+diff --git a/lib/fseeko.c b/lib/fseeko.c
 index 1c65d2a..9026408 100644
---- a/gnulib/lib/fseeko.c
-+++ b/gnulib/lib/fseeko.c
+--- a/lib/fseeko.c
++++ b/lib/fseeko.c
 @@ -47,7 +47,7 @@ fseeko (FILE *fp, off_t offset, int whence)
  #endif
  
@@ -120,10 +120,10 @@ index 1c65d2a..9026408 100644
        fp->_flags &= ~_IO_EOF_SEEN;
        fp->_offset = pos;
  #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
-diff --git a/gnulib/lib/stdio-impl.h b/gnulib/lib/stdio-impl.h
+diff --git a/lib/stdio-impl.h b/lib/stdio-impl.h
 index 502d891..ea38ee2 100644
---- a/gnulib/lib/stdio-impl.h
-+++ b/gnulib/lib/stdio-impl.h
+--- a/lib/stdio-impl.h
++++ b/lib/stdio-impl.h
 @@ -18,6 +18,12 @@
     the same implementation of stdio extension API, except that some fields
     have different naming conventions, or their access requires some casts.  */
