@@ -41,10 +41,10 @@ Signed-off-by: Kamil Dudka <kdudka@redhat.com>
  gl/m4/mountlist.m4 | 3 ++-
  2 files changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/gnulib/lib/mountlist.c b/gnulib/lib/mountlist.c
+diff --git a/lib/mountlist.c b/lib/mountlist.c
 index c3d2852..0b6f92e 100644
---- a/gnulib/lib/mountlist.c
-+++ b/gnulib/lib/mountlist.c
+--- a/lib/mountlist.c
++++ b/lib/mountlist.c
 @@ -37,6 +37,12 @@
  # include <sys/param.h>
  #endif
@@ -58,10 +58,10 @@ index c3d2852..0b6f92e 100644
  #if defined MOUNTED_GETFSSTAT   /* OSF_1 and Darwin1.3.x */
  # if HAVE_SYS_UCRED_H
  #  include <grp.h> /* needed on OSF V4.0 for definition of NGROUPS,
-diff --git a/gnulib/m4/mountlist.m4 b/gnulib/m4/mountlist.m4
+diff --git a/m4/mountlist.m4 b/m4/mountlist.m4
 index ec58dc8..82b2dcb 100644
---- a/gnulib/m4/mountlist.m4
-+++ b/gnulib/m4/mountlist.m4
+--- a/m4/mountlist.m4
++++ b/m4/mountlist.m4
 @@ -1,4 +1,4 @@
 -# serial 11
 +# serial 12

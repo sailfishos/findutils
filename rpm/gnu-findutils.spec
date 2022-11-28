@@ -7,8 +7,8 @@ License:    GPLv3+
 URL:        https://github.com/sailfishos/findutils
 Source0:    %{name}-%{version}.tar.gz
 Patch0:     findutils-4.6.0-no-locate.patch
-Patch1:     findutils-4.6.0-gnulib-fflush.patch
-Patch2:     findutils-4.6.0-gnulib-makedev.patch
+Patch100:   findutils-4.6.0-gnulib-fflush.patch
+Patch101:   findutils-4.6.0-gnulib-makedev.patch
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
@@ -42,7 +42,10 @@ Requires(postun): /sbin/install-info
 Man and info pages for %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}/upstream
+%autosetup -N -n %{name}-%{version}/upstream
+%autopatch -p1 -M99
+cd gnulib
+%autopatch -p1 -m100
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
